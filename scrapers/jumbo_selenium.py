@@ -7,7 +7,7 @@ def scrape_jumbo():
     options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(options=options)
 
-    url = "https://www.tiendasjumbo.co/search?text=blue%20label"
+    url = "https://www.jumbocolombia.com/whisky-johnnie-walker-blue-label-mini-cube-x-750-ml/p"
     driver.get(url)
     driver.implicitly_wait(5)
 
