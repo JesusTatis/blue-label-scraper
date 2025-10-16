@@ -15,7 +15,7 @@ class DislicoresSpider(scrapy.Spider):
             }
             return
 
-        # Tomar el primer producto que contenga 'Blue Label' en el nombre
+        # Buscar producto con "Blue Label"
         for item in data:
             nombre = item.get('productName', 'No encontrado')
             if 'blue' in nombre.lower():
@@ -27,7 +27,6 @@ class DislicoresSpider(scrapy.Spider):
                 }
                 return
 
-        # Si no encuentra ninguno
         yield {
             'tienda': 'Dislicores',
             'producto': 'No encontrado',

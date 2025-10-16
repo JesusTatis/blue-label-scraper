@@ -21,7 +21,7 @@ def scrape_jumbo(url="https://www.jumbocolombia.com/whisky-johnnie-walker-blue-l
     precio = "No encontrado"
 
     try:
-        # --- Nombre del producto ---
+        # Nombre del producto
         try:
             nombre_elem = wait.until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, "h1.vtex-store-components-3-x-productBrand"))
@@ -33,7 +33,7 @@ def scrape_jumbo(url="https://www.jumbocolombia.com/whisky-johnnie-walker-blue-l
             except:
                 pass
 
-        # --- Precio exacto ---
+        # Precio exacto
         try:
             price_elem = wait.until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, "span.vtex-product-price-1-x-sellingPriceValue"))
