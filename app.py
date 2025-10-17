@@ -1,9 +1,12 @@
 import csv
 import subprocess
+import os
+from pathlib import Path
 from scrapers.jumbo_selenium import scrape_jumbo
 from scrapers.quindio_bs4 import scrape_quindio
 
 def scrape_dislicores():
+    # Ejecuta el spider de Scrapy (genera resultados_dislicores.csv en la raíz del proyecto)
     subprocess.run(['scrapy', 'crawl', 'dislicores'], cwd='scrapers/dislicores_scrapy')
     with open('resultados_dislicores.csv', newline='', encoding='utf-8') as f:
         reader = csv.DictReader(f)
