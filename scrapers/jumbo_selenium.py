@@ -144,7 +144,7 @@ def scrape_jumbo(url="https://www.jumbocolombia.com/whisky-johnnie-walker-blue-l
                 print(f"Error en JavaScript: {e}")
 
     except Exception as e:
-        print(f"⚠️ Error en Jumbo: {e}")
+        print(f"Error en Jumbo: {e}")
 
     return {"tienda": "Jumbo", "producto": producto, "precio": precio}
 
