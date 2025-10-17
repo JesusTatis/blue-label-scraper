@@ -87,7 +87,7 @@ if __name__ == "__main__":
         resultados.extend(dislicores_rows)
     else:
         resultados.append(dislicores_rows)
-    print("Dislicores listo")
+    print("✅Dislicores listo")
     resultados.append(scrape_olimpica())
     print("✅Olímpica listo")
     resultados.append(scrape_jumbo())
