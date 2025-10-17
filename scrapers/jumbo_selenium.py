@@ -88,40 +88,6 @@ def scrape_jumbo(url="https://www.jumbocolombia.com/whisky-johnnie-walker-blue-l
         except Exception as e:
             print(f"Error en estrategia de regex: {e}")
 
-        # Plan B: Buscar con selectores CSS excluyendo elementos con "ml"
-        if precio == "No encontrado":
-            try:
-                all_elements = driver.find_elements(By.CSS_SELECTOR, "span, div")
-                
-                for elem in all_elements:
-                    texto = elem.text.strip()
-                    
-                    # Si contiene $ y números
-                    if "$" in texto:
-                        solo_digitos = re.sub(r'[^\d]', '', texto)
-                        
-                        # Debe tener 6+ dígitos Y NO contener "ml" o "x"
-                        if (len(solo_digitos) >= 6 and 
-                            'ml' not in texto.lower() and 
-                            'x ml' not in texto.lower() and
-                            len(texto) < 30):  # No debe ser un texto largo
-                            
-                            precio = texto.replace("\xa0", " ").strip()
-                            break
-                            
-            except Exception as e:
-                print(f"Error en Plan B: {e}")
-
-        # Plan C: JavaScript avanzado
-        if precio == "No encontrado":
-            try:
-                script =
-                resultado_js = driver.execute_script(script)
-                if resultado_js:
-                    precio = resultado_js.replace("\xa0", " ").strip()
-            except Exception as e:
-                print(f"Error en JavaScript: {e}")
-
     except Exception as e:
         print(f"Error en Jumbo: {e}")
 
