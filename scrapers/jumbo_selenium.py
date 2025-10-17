@@ -49,11 +49,7 @@ def scrape_jumbo(url="https://www.jumbocolombia.com/whisky-johnnie-walker-blue-l
                     pass
         except:
             pass
-
-        # NUEVA ESTRATEGIA: Buscar específicamente precios SIN "x ml"
-        # El precio correcto NO tiene "x ml" o "ml" después
-        # El precio por ml SÍ tiene "x ml" después
-        
+            
         try:
             # Obtenemos todo el texto de la página
             body_text = driver.find_element(By.TAG_NAME, "body").text
@@ -119,24 +115,7 @@ def scrape_jumbo(url="https://www.jumbocolombia.com/whisky-johnnie-walker-blue-l
         # Plan C: JavaScript avanzado
         if precio == "No encontrado":
             try:
-                script = """
-                let precios = [];
-                document.querySelectorAll('*').forEach(el => {
-                    let text = el.textContent.trim();
-                    if (text.includes('$') && text.length < 30) {
-                        let digitos = text.replace(/[^0-9]/g, '');
-                        // Solo si tiene 6+ dígitos Y NO tiene "ml"
-                        if (digitos.length >= 6 && !text.toLowerCase().includes('ml')) {
-                            precios.push({
-                                texto: text,
-                                digitos: digitos.length
-                            });
-                        }
-                    }
-                });
-                precios.sort((a, b) => b.digitos - a.digitos);
-                return precios.length > 0 ? precios[0].texto : null;
-                """
+                script =
                 resultado_js = driver.execute_script(script)
                 if resultado_js:
                     precio = resultado_js.replace("\xa0", " ").strip()
