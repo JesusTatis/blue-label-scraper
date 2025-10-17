@@ -45,7 +45,6 @@ def scrape_dislicores():
     return [{'tienda': 'Dislicores', 'producto': 'No encontrado', 'precio': 'No encontrado'}]
 
 def guardar_csv(datos):
-    # Normalizar/planificar datos: aplanar una posible lista anidada
     flat = []
     for item in datos:
         if isinstance(item, list):
@@ -55,7 +54,6 @@ def guardar_csv(datos):
         elif isinstance(item, dict):
             flat.append(item)
         else:
-            # Ignoramos elementos inesperados
             pass
 
     # Determinar dinámicamente todas las columnas presentes
@@ -90,20 +88,14 @@ if __name__ == "__main__":
     else:
         resultados.append(dislicores_rows)
     print("Dislicores listo")
-
-    # Agregamos Olímpica
     resultados.append(scrape_olimpica())
     print("✅Olímpica listo")
     resultados.append(scrape_jumbo())
     print("✅Jumbo listo")
     resultados.append(scrape_quindio())
     print("✅Licores El Quindio listo")
-
-    # Agregamos La Licorera
     resultados.append(scrape_lalicorera())
     print("✅La Licorera listo")
-
-    # Agregamos Lalico
     resultados.append(scrape_lalico())
     print("✅Lalico listo")
 
