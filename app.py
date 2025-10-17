@@ -93,18 +93,18 @@ if __name__ == "__main__":
 
     # Agregamos Olímpica
     resultados.append(scrape_olimpica())
-    print("Olímpica listo")
+    print("✅Olímpica listo")
     resultados.append(scrape_jumbo())
-    print("Jumbo listo")
+    print("✅Jumbo listo")
     resultados.append(scrape_quindio())
-    print("Licores El Quindio listo")
+    print("✅Licores El Quindio listo")
 
     # Agregamos La Licorera
     resultados.append(scrape_lalicorera())
-    print("La Licorera listo")
+    print("✅La Licorera listo")
 
     # Agregamos Lalico
     resultados.append(scrape_lalico())
-    print("Lalico listo")
+    print("✅Lalico listo")
 
     guardar_csv(resultados)
