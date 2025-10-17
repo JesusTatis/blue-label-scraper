@@ -65,14 +65,11 @@ def scrape_jumbo(url="https://www.jumbocolombia.com/whisky-johnnie-walker-blue-l
                 # Extraemos solo dígitos
                 solo_digitos = re.sub(r'[^\d]', '', precio_texto)
                 
-                if len(solo_digitos) >= 6:  # Precio grande (más de 6 dígitos)
-                    # Buscamos el contexto alrededor del precio en el texto
+                if len(solo_digitos) >= 6:  
                     idx = body_text.find(precio_texto)
                     if idx != -1:
-                        # Miramos los 10 caracteres después del precio
                         contexto = body_text[idx:idx + len(precio_texto) + 10].lower()
                         
-                        # Si NO contiene "ml" o "x ml", es el precio total
                         if 'ml' not in contexto and 'x' not in contexto:
                             precios_validos.append({
                                 'texto': precio_texto,
